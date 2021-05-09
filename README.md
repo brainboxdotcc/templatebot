@@ -1,4 +1,4 @@
-# templatebot
+# D++ CMake Template (templatebot)
 
 CMake template for a simple D++ bot. This template assumes that D++ is already installed systemwide.
 
@@ -13,7 +13,9 @@ CMake template for a simple D++ bot. This template assumes that D++ is already i
 
 Create a config.json in the directory above the build directory:
 
-    { "token": "your bot token here" }
+```json
+{ "token": "your bot token here" }
+```
 
 Start the bot:
 
@@ -27,5 +29,3 @@ You can add as many header files and .cpp files into the src and include folders
 ## Renaming the bot
 
 To rename the bot, search and replace "templatebot" in the `CMakeLists.txt` with your new bots name and then rename the templatebot folder in include. Rerun `cmake ..` from the `build` directory and rebuild.
-
-# templatebot
