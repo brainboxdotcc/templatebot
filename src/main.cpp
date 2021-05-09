@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
     configfile >> configdocument;
 
     /* Setup the bot */
-    dpp::cluster bot(configdocument["token"]);
+    dpp::cluster bot(configdocument["token"], dpp::i_default_intents, 1);
 
     /* Log event */
     bot.on_log([&bot](const dpp::log_t &event) {
