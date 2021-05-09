@@ -35,7 +35,7 @@ int main(int argc, char const *argv[])
 
 	if (command == "!hello")
 	{
-		bot.message_create(dpp::message(event.msg->channel_id, "Bot is not playing a song"));
+		bot.message_create(dpp::message(event.msg->channel_id, "Hello to you too."));
 	}
 
     });
