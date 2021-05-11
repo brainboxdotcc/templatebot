@@ -7,7 +7,7 @@ string(ASCII 27 Esc)
 
 include_directories( "include" )
 
-target_link_libraries(templatebot dl dpp crypto ssl fmtd)
+target_link_libraries(templatebot dl dpp crypto ssl)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread -g -fPIC -rdynamic")
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")
 
