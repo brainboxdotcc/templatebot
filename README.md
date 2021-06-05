@@ -1,6 +1,6 @@
 # D++ CMake Template (templatebot)
 
-CMake template for a simple D++ bot. This template assumes that D++ is already installed systemwide.
+CMake template for a simple D++ bot. This template assumes that D++ is already installed.
 
 ## Compilation
 
@@ -8,6 +8,10 @@ CMake template for a simple D++ bot. This template assumes that D++ is already i
     cd build
     cmake ..
     make -j
+
+If DPP is installed in a different location you can specify the root directory to look in while running cmake 
+
+    cmake .. -DDPP_ROOT_DIR=<your-path>
 
 ## Running the template bot
 
