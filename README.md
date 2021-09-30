@@ -1,6 +1,6 @@
 # D++ CMake Template (templatebot)
 
-CMake template for a simple D++ bot. This template assumes that D++ is already installed.
+CMake template for a simple [D++](https://dpp.dev) bot. This template assumes that D++ is already installed.
 
 ## Compilation
 
