@@ -1,11 +1,8 @@
 #include <dpp/dpp.h>
-#include <dpp/fmt/format.h>
 #include <dpp/nlohmann/json.hpp>
+#include <templatebot/templatebot.h>
 #include <iomanip>
 #include <sstream>
-#include <dpp/discordevents.h>
-#include <dpp/message.h>
-#include <templatebot/templatebot.h>
 
 using json = nlohmann::json;
 
@@ -16,7 +13,7 @@ int main(int argc, char const *argv[])
     configfile >> configdocument;
 
     /* Setup the bot */
-    dpp::cluster bot(configdocument["token"], dpp::i_default_intents, 1);
+    dpp::cluster bot(configdocument["token"]);
 
     /* Log event */
     bot.on_log([&bot](const dpp::log_t &event) {
