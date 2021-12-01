@@ -17,8 +17,7 @@ int main(int argc, char const *argv[])
 
     /* Log event */
     bot.on_log([&bot](const dpp::log_t &event) {
-	if (event.severity >= dpp::ll_debug)
-	{
+	if (event.severity >= dpp::ll_debug) {
 		std::cout << dpp::utility::current_date_time() << " [" << dpp::utility::loglevel(event.severity) << "] " << event.message << "\n";
 	}
     });
@@ -30,8 +29,7 @@ int main(int argc, char const *argv[])
 	std::string command;
 	ss >> command;
 
-	if (command == "!hello")
-	{
+	if (command == "!hello") {
 		bot.message_create(dpp::message(event.msg.channel_id, "Hello to you too."));
 	}
 
@@ -41,4 +39,3 @@ int main(int argc, char const *argv[])
     bot.start(false);
     return 0;
 }
-
