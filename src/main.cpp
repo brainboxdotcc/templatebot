@@ -1,8 +1,13 @@
 #include <dpp/dpp.h>
 #include <dpp/nlohmann/json.hpp>
 #include <templatebot/templatebot.h>
-#include <iomanip>
 #include <sstream>
+
+/* You will need to fill in your guild id. When you invite the bot, be sure to
+ * invite it with the scopes 'bot' and 'applications.commands', e.g.
+ * https://discord.com/oauth2/authorize?client_id=940762342495518720&scope=bot+applications.commands&permissions=139586816064
+ */
+const dpp::snowflake MY_GUILD_ID  =  825407338755653642;
 
 using json = nlohmann::json;
 
@@ -15,27 +20,27 @@ int main(int argc, char const *argv[])
     /* Setup the bot */
     dpp::cluster bot(configdocument["token"]);
 
-    /* Log event */
-    bot.on_log([&bot](const dpp::log_t &event) {
-	if (event.severity >= dpp::ll_debug) {
-		std::cout << dpp::utility::current_date_time() << " [" << dpp::utility::loglevel(event.severity) << "] " << event.message << "\n";
-	}
+    /* Handle slash command */
+    bot.on_interaction_create([](const dpp::interaction_create_t& event) {
+         if (event.command.get_command_name() == "ping") {
+            event.reply("Pong!");
+        }
     });
 
-    /* Use the on_message_create event to look for commands */
-    bot.on_message_create([&bot](const dpp::message_create_t &event) {
-
-	std::stringstream ss(event.msg.content);
-	std::string command;
-	ss >> command;
-
-	if (command == "!hello") {
-		bot.message_create(dpp::message(event.msg.channel_id, "Hello to you too."));
-	}
-
+    /* Register slash command here in on_ready */
+    bot.on_ready([&bot](const dpp::ready_t& event) {
+        /* Wrap command registration in run_once to make sure it doesnt run on every full reconnection */
+        if (dpp::run_once<struct register_bot_commands>()) {
+            bot.guild_command_create(dpp::slashcommand("ping", "Ping pong!", bot.me.id), MY_GUILD_ID);
+        }
     });
 
-    /* Start bot */
+    /* Output simple log messages to stdout */
+    bot.on_log(dpp::utility::cout_logger());
+
+    /* Start the bot */
     bot.start(false);
+
     return 0;
+
 }
