@@ -20,6 +20,9 @@ int main(int argc, char const *argv[])
     /* Setup the bot */
     dpp::cluster bot(configdocument["token"]);
 
+    /* Output simple log messages to stdout */
+    bot.on_log(dpp::utility::cout_logger());
+
     /* Handle slash command */
     bot.on_interaction_create([](const dpp::interaction_create_t& event) {
          if (event.command.get_command_name() == "ping") {
@@ -34,9 +37,6 @@ int main(int argc, char const *argv[])
             bot.guild_command_create(dpp::slashcommand("ping", "Ping pong!", bot.me.id), MY_GUILD_ID);
         }
     });
-
-    /* Output simple log messages to stdout */
-    bot.on_log(dpp::utility::cout_logger());
 
     /* Start the bot */
     bot.start(false);
