@@ -53,7 +53,7 @@ else()
     FetchContent_Declare(
             libdpp
             GIT_REPOSITORY https://github.com/brainboxdotcc/DPP.git
-            GIT_TAG v9.0.6)
+            GIT_TAG master)
 
     FetchContent_GetProperties(libdpp)
     if(NOT libdpp_POPULATED)
