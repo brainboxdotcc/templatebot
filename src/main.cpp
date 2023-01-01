@@ -1,5 +1,6 @@
 #include <templatebot/templatebot.h>
 #include <sstream>
+#define fs std::filesystem
 
 /* When you invite the bot, be sure to invite it with the
  * scopes 'bot' and 'applications.commands', e.g.
@@ -10,8 +11,8 @@ using json = nlohmann::json;
 
 int main(int argc, char const *argv[])
 {
-    if(!std::filesystem::exists("../config.json")) {
-        std::cout << "../config.json does not exist!" << std::endl;
+    if(!fs::exists("../config.json")) {
+        std::cout << canonical(fs::path("..")).append("config.json") << " does not exist!" << std::endl;
         return 1;
     }
 
