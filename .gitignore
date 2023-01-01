@@ -5,3 +5,4 @@ out/
 .idea/
 tmp/
 config.json
+cmake-build-debug/
