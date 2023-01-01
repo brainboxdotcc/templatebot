@@ -1,6 +1,6 @@
 #include <templatebot/templatebot.h>
 #include <sstream>
-#define fs std::filesystem
+namespace fs = std::filesystem;
 
 /* When you invite the bot, be sure to invite it with the
  * scopes 'bot' and 'applications.commands', e.g.
