@@ -12,7 +12,7 @@ using json = nlohmann::json;
 int main(int argc, char const *argv[])
 {
     if(!fs::exists("../config.json")) {
-        std::cout << canonical(fs::path("..")).append("config.json") << " does not exist!" << std::endl;
+        std::cout << canonical(fs::path("..")).append("config.json").string() << " does not exist!" << std::endl;
         return 1;
     }
 
