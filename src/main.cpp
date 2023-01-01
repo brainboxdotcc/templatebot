@@ -10,6 +10,11 @@ using json = nlohmann::json;
 
 int main(int argc, char const *argv[])
 {
+    if(!std::filesystem::exists("../config.json")) {
+        std::cout << "../config.json does not exist!" << std::endl;
+        return 1;
+    }
+
     json configdocument;
     std::ifstream configfile("../config.json");
     configfile >> configdocument;
