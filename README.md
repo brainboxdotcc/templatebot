@@ -9,7 +9,7 @@ CMake template for a simple [D++](https://dpp.dev) bot. This template assumes th
     cmake ..
     make -j
 
-If DPP is installed in a different location you can specify the root directory to look in while running cmake 
+If DPP is installed in a different location, you can specify the root directory to look in while running cmake 
 
     cmake .. -DDPP_ROOT_DIR=<your-path>
 
