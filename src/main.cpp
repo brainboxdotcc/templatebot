@@ -6,13 +6,15 @@
  * https://discord.com/oauth2/authorize?client_id=940762342495518720&scope=bot+applications.commands&permissions=139586816064
  */
 
+using json = nlohmann::json;
+
 int main(int argc, char const *argv[])
 {
-    dpp::json configdocument;
+    json configdocument;
     std::ifstream configfile("../config.json");
     configfile >> configdocument;
 
-    /* Set up the bot */
+    /* Setup the bot */
     dpp::cluster bot(configdocument["token"]);
 
     /* Output simple log messages to stdout */
@@ -27,7 +29,7 @@ int main(int argc, char const *argv[])
 
     /* Register slash command here in on_ready */
     bot.on_ready([&bot](const dpp::ready_t& event) {
-        /* Wrap command registration in run_once to make sure it doesn't run on every full reconnection */
+        /* Wrap command registration in run_once to make sure it doesnt run on every full reconnection */
         if (dpp::run_once<struct register_bot_commands>()) {
             bot.global_command_create(dpp::slashcommand("ping", "Ping pong!", bot.me.id));
         }
