@@ -30,13 +30,17 @@ else()
 	find_package(OpenSSL REQUIRED)
 endif()
 
+if(NOT CMAKE_SYSTEM_NAME STREQUAL Windows)
+	set(DL_LIBRARY dl)
+endif()
+
 target_include_directories(${BOT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${OPENSSL_INCLUDE_DIR}
 )
 
 target_link_libraries(${BOT_NAME}
-    dl
+    ${DL_LIBRARY}
     ${CMAKE_THREAD_LIBS_INIT}
     ${OPENSSL_CRYPTO_LIBRARY} 
     ${OPENSSL_SSL_LIBRARY}
